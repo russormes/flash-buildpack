@@ -26,9 +26,8 @@ url=http://download.macromedia.com/pub/flex/sdk/flex_sdk_4.6.zip
 if [ ! -f $cache/flex-sdk.zip ]; then
 	topic "Fetching flex-sdk-zip"
 	curl -o $cache/flex-sdk.zip $url
+	topic "Unzip flex sdk in $cache/flex"
+	unzip $cache/flex-sdk.zip -d $cache/flex
 fi
-
-topic "Unzip flex sdk in $cache/flex"
-unzip $cache/flex-sdk.zip -d $cache/flex
 
 echo "export FLEXPATH=\"$cache/flex\"" >> $bp_dir/export
