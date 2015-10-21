@@ -32,13 +32,3 @@ fi
 
 echo "export FLEXPATH=\"$cache/flex\"" >> $bp_dir/export
 
-topic "Install client dependencies"
-
-cd $build/client
-npm install
-npm install --dev
-cd -
-
-
-
-
