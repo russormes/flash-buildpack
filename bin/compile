@@ -28,7 +28,7 @@ if [ ! -f $cache/flex-sdk.zip ]; then
 	curl -o $cache/flex-sdk.zip $url
 fi
 
-topic "Unzip flex sdk in $build/flex"
-unzip $cache/flex-sdk.zip -d $build/flex
+topic "Unzip flex sdk in $cache/flex"
+unzip $cache/flex-sdk.zip -d $cache/flex
 
-echo "export FLEXPATH=\"$build/flex\"" >> $bp_dir/export
+echo "export FLEXPATH=\"$cache/flex\"" >> $bp_dir/export
