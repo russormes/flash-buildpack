@@ -6,6 +6,7 @@ set -eo pipefail
 mkdir -p "$1" "$2"
 build=$(cd "$1/" && pwd)
 cache=$(cd "$2/" && pwd)
+bp_dir=$(cd $(dirname ${0:-}); cd ..; pwd)
 
 function error() {
   echo " !     $*" >&2
@@ -27,7 +28,7 @@ if [ ! -f $cache/flex-sdk.zip ]; then
 	curl -o $cache/flex-sdk.zip $url
 fi
 
-topic "Unzip flex sdk in $cache/flex"
-unzip $cache/flex-sdk.zip -d $cache/flex
-export PATH="$cache/flex/bin:$PATH"
-export FLEXPATH="$cache/flex/"
+topic "Unzip flex sdk in $build/flex"
+unzip $cache/flex-sdk.zip -d $build/flex
+
+echo "export FLEXPATH=\"$build/flex\"" >> $bp_dir/export
